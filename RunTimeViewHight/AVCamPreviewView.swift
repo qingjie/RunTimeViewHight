@@ -58,7 +58,31 @@ import AVFoundation
 @objc(AVCamPreviewView)
 class AVCamPreviewView: UIView {
     
+    
+    //获取屏幕大小
+    let screenBounds:CGRect = UIScreen.mainScreen().bounds
+    //println(screenBounds)
+    
+    //获取屏幕大小（不包括状态栏高度）
+    let viewBounds:CGRect = UIScreen.mainScreen().applicationFrame
+    //println(viewBounds)
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        println(" screenBounds.width ==== \(screenBounds.width)")
+        println(" screenBounds.height ==== \(screenBounds.height)")
+        //super.init(frame: CGRectMake(0 , 0, screenBounds.width, screenBounds.height))
+        
+    }
+
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+
+    }
+    
+    
     override class func layerClass() -> AnyClass {
+        
         return AVCaptureVideoPreviewLayer.self
     }
     

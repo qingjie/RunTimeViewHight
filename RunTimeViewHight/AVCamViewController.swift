@@ -65,15 +65,6 @@ let SessionRunningAndDeviceAuthorizedContext = UnsafeMutablePointer<Void>.alloc(
 class AVCamViewController: UIViewController, AVCaptureFileOutputRecordingDelegate {
     
     
-    //获取屏幕大小
-    let screenBounds:CGRect = UIScreen.mainScreen().bounds
-    //println(screenBounds)
-    
-    //获取屏幕大小（不包括状态栏高度）
-    let viewBounds:CGRect = UIScreen.mainScreen().applicationFrame
-    //println(viewBounds)
-    
-    
     // For use in the storyboards.
     @IBOutlet private weak var previewView: AVCamPreviewView!
     @IBOutlet private weak var recordButton: UIButton!
@@ -107,7 +98,7 @@ class AVCamViewController: UIViewController, AVCaptureFileOutputRecordingDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+       
         // Create the AVCaptureSession
         let session = AVCaptureSession()
         self.session = session
@@ -154,7 +145,7 @@ class AVCamViewController: UIViewController, AVCaptureFileOutputRecordingDelegat
                     } else {
                         orientation =  UIApplication.sharedApplication().statusBarOrientation
                     }
-                    self.setCameraSize()
+                    
                     (self.previewView.layer as! AVCaptureVideoPreviewLayer).connection.videoOrientation = AVCaptureVideoOrientation(rawValue: orientation.rawValue)!
                     //AVLayerVideoGravityResizeAspect 保持视频的宽高比并使播放内容自动适应播放窗口的大小
                     //default one
@@ -209,7 +200,9 @@ class AVCamViewController: UIViewController, AVCaptureFileOutputRecordingDelegat
     }
     
     override func viewWillAppear(animated: Bool) {
+       
         dispatch_async(self.sessionQueue) {
+          
             self.addObserver(self, forKeyPath: "sessionRunningAndDeviceAuthorized", options: .Old | .New, context: SessionRunningAndDeviceAuthorizedContext)
             self.addObserver(self, forKeyPath: "stillImageOutput.capturingStillImage", options: .New | .Old, context: CapturingStillImageContext)
             self.addObserver(self, forKeyPath: "movieFileOutput.recording", options: .Old | .New, context: RecordingContext)
@@ -254,7 +247,7 @@ class AVCamViewController: UIViewController, AVCaptureFileOutputRecordingDelegat
     }
     
     override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
-         self.setCameraSize()
+        
         (self.previewView.layer as! AVCaptureVideoPreviewLayer).connection.videoOrientation = AVCaptureVideoOrientation(rawValue: toInterfaceOrientation.rawValue)!
        
     }
@@ -312,7 +305,7 @@ class AVCamViewController: UIViewController, AVCaptureFileOutputRecordingDelegat
                     // Setup background task. This is needed because the captureOutput:didFinishRecordingToOutputFileAtURL: callback is not received until AVCam returns to the foreground unless you request background execution time. This also ensures that there will be time to write the file to the assets library when AVCam is backgrounded. To conclude this background execution, -endBackgroundTask is called in -recorder:recordingDidFinishToOutputFileURL:error: after the recorded file has been saved.
                     self.backgroundRecordingID = UIApplication.sharedApplication().beginBackgroundTaskWithExpirationHandler({})
                 }
-                self.setCameraSize()
+             
                 // Update the orientation on the movie file output video connection before starting recording.
                 self.movieFileOutput.connectionWithMediaType(AVMediaTypeVideo).videoOrientation = (self.previewView.layer as! AVCaptureVideoPreviewLayer).connection.videoOrientation
                 
@@ -380,7 +373,7 @@ class AVCamViewController: UIViewController, AVCaptureFileOutputRecordingDelegat
         dispatch_async(self.sessionQueue) {
             // Update the orientation on the still image output video connection before capturing.
             self.stillImageOutput.connectionWithMediaType(AVMediaTypeVideo).videoOrientation = (self.previewView.layer as! AVCaptureVideoPreviewLayer).connection.videoOrientation
-            self.setCameraSize()
+         
             // Flash set to Auto for Still Capture
             AVCamViewController.setFlashMode(.Auto, forDevice: self.videoDeviceInput.device)
             
@@ -397,7 +390,7 @@ class AVCamViewController: UIViewController, AVCaptureFileOutputRecordingDelegat
     }
     
     @IBAction private func focusAndExposeTap(gestureRecognizer: UIGestureRecognizer) {
-        self.setCameraSize()
+        
         let devicePoint = (self.previewView.layer as! AVCaptureVideoPreviewLayer).captureDevicePointOfInterestForPoint(gestureRecognizer.locationInView(gestureRecognizer.view))
         self.focusWithMode(.AutoFocus, exposeWithMode: .AutoExpose, atDevicePoint: devicePoint, monitorSubjectAreaChange: true)
     }
@@ -486,20 +479,10 @@ class AVCamViewController: UIViewController, AVCaptureFileOutputRecordingDelegat
     private func runStillImageCaptureAnimation() {
         dispatch_async(dispatch_get_main_queue()) {
             self.previewView.layer.opacity = 0.0
-            self.setCameraSize()
             UIView.animateWithDuration(0.25) {
                 self.previewView.layer.opacity = 1.0
             }
         }
-    }
-    
-    private func setCameraSize(){
-        self.previewView.layer.frame = CGRectMake(0 , 0, screenBounds.width, screenBounds.height)
-        
-        println("width ==== \(screenBounds.width)")
-        println("height ==== \(screenBounds.height)")
-
-        
     }
     
     private func checkDeviceAuthorizationStatus() {
