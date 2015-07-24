@@ -15,6 +15,8 @@
 		50CCF86F1B604ADF007FBBE7 /* RunTimeViewHightTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CCF86E1B604ADF007FBBE7 /* RunTimeViewHightTests.swift */; };
 		50D3C7231B6087A100B36F81 /* ViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D3C7221B6087A100B36F81 /* ViewController1.swift */; };
 		50D3C7251B6136BB00B36F81 /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D3C7241B6136BB00B36F81 /* Animator.swift */; };
+		50D3C7271B61590200B36F81 /* AVCamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D3C7261B61590200B36F81 /* AVCamViewController.swift */; };
+		50D3C7291B61592600B36F81 /* AVCamPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D3C7281B61592600B36F81 /* AVCamPreviewView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +42,8 @@
 		50CCF86E1B604ADF007FBBE7 /* RunTimeViewHightTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunTimeViewHightTests.swift; sourceTree = "<group>"; };
 		50D3C7221B6087A100B36F81 /* ViewController1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController1.swift; sourceTree = "<group>"; };
 		50D3C7241B6136BB00B36F81 /* Animator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
+		50D3C7261B61590200B36F81 /* AVCamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVCamViewController.swift; sourceTree = "<group>"; };
+		50D3C7281B61592600B36F81 /* AVCamPreviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVCamPreviewView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +89,8 @@
 				50CCF85A1B604ADE007FBBE7 /* ViewController.swift */,
 				50D3C7221B6087A100B36F81 /* ViewController1.swift */,
 				50D3C7241B6136BB00B36F81 /* Animator.swift */,
+				50D3C7261B61590200B36F81 /* AVCamViewController.swift */,
+				50D3C7281B61592600B36F81 /* AVCamPreviewView.swift */,
 				50CCF85C1B604ADE007FBBE7 /* Main.storyboard */,
 				50CCF85F1B604ADE007FBBE7 /* Images.xcassets */,
 				50CCF8611B604ADE007FBBE7 /* LaunchScreen.xib */,
@@ -220,7 +226,9 @@
 			files = (
 				50D3C7251B6136BB00B36F81 /* Animator.swift in Sources */,
 				50D3C7231B6087A100B36F81 /* ViewController1.swift in Sources */,
+				50D3C7271B61590200B36F81 /* AVCamViewController.swift in Sources */,
 				50CCF85B1B604ADE007FBBE7 /* ViewController.swift in Sources */,
+				50D3C7291B61592600B36F81 /* AVCamPreviewView.swift in Sources */,
 				50CCF8591B604ADE007FBBE7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

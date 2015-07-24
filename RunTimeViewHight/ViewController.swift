@@ -12,16 +12,24 @@ class ViewController: UIViewController {
     
     //获取屏幕大小
     let screenBounds:CGRect = UIScreen.mainScreen().bounds
-    //println(screenBounds) //iPhone6输出：（0.0,0.0,375.0,667.0）
+    //println(screenBounds) 
     
     //获取屏幕大小（不包括状态栏高度）
     let viewBounds:CGRect = UIScreen.mainScreen().applicationFrame
-    //println(viewBounds) //iPhone6输出：（0.0,20.0,375.0,647.0）
+    //println(viewBounds)
     
     @IBOutlet weak var view1: UIView!
     var isHighLighted:Bool = false
-    var buttonCancel = UIButton.buttonWithType(UIButtonType.System) as! UIButton
-    var button = UIButton.buttonWithType(UIButtonType.System) as! UIButton
+    var buttonCancel = UIButton(frame:CGRectMake(20, 30, 20, 20))
+    var button = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
+    
+    @IBOutlet var containerView: UIView!
+    
+    
+    @IBOutlet weak var btnSwitchImg: UIButton!
+    var blnBtnSwitchImg : Bool = false
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,7 +43,15 @@ class ViewController: UIViewController {
         view1.frame = CGRectMake(0 , self.screenBounds.height / 2, self.screenBounds.width, self.screenBounds.height * 0.5)
         self.view1.backgroundColor = UIColor.redColor()
         
+        containerView.frame = CGRectMake(0 , 0, self.screenBounds.width, self.screenBounds.height)
         
+        println("---1---")
+        println(view1.frame.width)
+        println(view1.frame.height)
+        println("--2----")
+        println(containerView.frame.width)
+        println(containerView.frame.height)
+        println("---3---")
         cancelButton()
         loadButton()
     }
@@ -45,8 +61,10 @@ class ViewController: UIViewController {
     func cancelButton(){
         
         
-        buttonCancel.setTitle("Cancel", forState: UIControlState.Normal)
-        buttonCancel.frame = CGRectMake(10, 10, 100, 44)
+        //buttonCancel.setTitle("Cancel", forState: UIControlState.Normal)
+        let image = UIImage(named: "close_camera") as UIImage?
+        buttonCancel.setImage(image, forState: .Normal)
+        buttonCancel.frame = CGRectMake(20, 30, 20, 20)
         
         //self.view.addSubview(button as UIView)
         
@@ -77,8 +95,11 @@ class ViewController: UIViewController {
 
     func loadButton(){
         
-        button.setTitle("Show Green", forState: UIControlState.Normal)
-        button.frame = CGRectMake(250, 10, 100, 44)
+        let image = UIImage(named: "pop-in") as UIImage?
+        self.button.setImage(image, forState: .Normal)
+        
+        //button.setTitle("Show Green", forState: UIControlState.Normal)
+        button.frame = CGRectMake(200, 30, 20, 20)
         
         button.addTarget(self, action: "buttonClicked:", forControlEvents: UIControlEvents.TouchUpInside)
         
@@ -96,7 +117,10 @@ class ViewController: UIViewController {
             
             switch self.isHighLighted{
                 case false:
-                    self.button.setTitle("Show Blue", forState: UIControlState.Normal)
+                    //self.button.setTitle("Show Blue", forState: UIControlState.Normal)
+                    let image = UIImage(named: "pop-out") as UIImage?
+                    self.button.setImage(image, forState: .Normal)
+                    
                     self.isHighLighted = true
                     self.view1.frame = CGRectMake(0 , self.screenBounds.height / 2, self.self.screenBounds.width, self.screenBounds.height * 0.5)
                     self.view1.backgroundColor = UIColor.greenColor()
@@ -106,7 +130,9 @@ class ViewController: UIViewController {
                     self.view1.layer.addAnimation(transition, forKey: "transition")
                 
                 case true:
-                    self.button.setTitle("Show Green", forState: UIControlState.Normal)
+                    //self.button.setTitle("Show Green", forState: UIControlState.Normal)
+                    let image = UIImage(named: "pop-in") as UIImage?
+                    self.button.setImage(image, forState: .Normal)
                     self.isHighLighted = false
                     self.view1.frame = CGRectMake(0 , self.screenBounds.height - self.viewBounds.height + 100, self.screenBounds.width, self.viewBounds.height - 100)
                     self.view1.backgroundColor = UIColor.blueColor()
@@ -152,6 +178,24 @@ class ViewController: UIViewController {
     }
     
 
+    @IBAction func switchBackgroundImage(sender: AnyObject) {
+        if blnBtnSwitchImg == true {
+            
+            //btnSwitchImg.backgroundColor=UIColor.redColor()
+            btnSwitchImg.setBackgroundImage(UIImage(named:"image1"),forState:.Normal)
+            blnBtnSwitchImg = false
+            println("true")
+            
+        }else{
+            
+            //btnSwitchImg.backgroundColor=UIColor.orangeColor()
+            btnSwitchImg.setBackgroundImage(UIImage(named:"image2"),forState:.Normal)
+            blnBtnSwitchImg = true
+            println("false")
+        }
+       
+
+    }
     
 
 }

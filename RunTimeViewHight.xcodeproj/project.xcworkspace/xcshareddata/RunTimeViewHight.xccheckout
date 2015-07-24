@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>F4CD5369-1595-418E-8D9F-B154765288C8</string>
+	<key>IDESourceControlProjectName</key>
+	<string>project</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>BB772C81E27F0E8051C0DF364BEC8C3B3540A21D</key>
+		<string>https://github.com/qingjie/RunTimeViewHight.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>RunTimeViewHight.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>BB772C81E27F0E8051C0DF364BEC8C3B3540A21D</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/qingjie/RunTimeViewHight.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>BB772C81E27F0E8051C0DF364BEC8C3B3540A21D</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>BB772C81E27F0E8051C0DF364BEC8C3B3540A21D</string>
+			<key>IDESourceControlWCCName</key>
+			<string>RunTimeViewHight</string>
+		</dict>
+	</array>
+</dict>
+</plist>
