@@ -64,12 +64,27 @@ let SessionRunningAndDeviceAuthorizedContext = UnsafeMutablePointer<Void>.alloc(
 @objc(AVCamViewController)
 class AVCamViewController: UIViewController, AVCaptureFileOutputRecordingDelegate {
     
+    @IBOutlet var rootView: UIView!
+    
+    //获取屏幕大小
+    let screenBounds:CGRect = UIScreen.mainScreen().bounds
+    //println(screenBounds)
+    
+    //获取屏幕大小（不包括状态栏高度）
+    let viewBounds:CGRect = UIScreen.mainScreen().applicationFrame
+    //println(viewBounds)
     
     // For use in the storyboards.
     @IBOutlet private weak var previewView: AVCamPreviewView!
+    
     @IBOutlet private weak var recordButton: UIButton!
     @IBOutlet private weak var cameraButton: UIButton!
     @IBOutlet private weak var stillButton: UIButton!
+    var isHighLighted:Bool = false
+    
+    var btnCancel = UIButton(frame:CGRectMake(20, 30, 20, 20))
+    var btnPop = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
+    
     // Session management.
     /// Communicate with the session and other session objects on this queue.
     private var sessionQueue: dispatch_queue_t!
@@ -98,7 +113,7 @@ class AVCamViewController: UIViewController, AVCaptureFileOutputRecordingDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        
         // Create the AVCaptureSession
         let session = AVCaptureSession()
         self.session = session
@@ -200,9 +215,18 @@ class AVCamViewController: UIViewController, AVCaptureFileOutputRecordingDelegat
     }
     
     override func viewWillAppear(animated: Bool) {
-       
+        
+        self.rootView.frame = CGRectMake(0 , screenBounds.height * 0.5, screenBounds.width, 337 )
+        self.previewView.frame = CGRectMake(0 , 0, screenBounds.width, 337 )
+        println(self.rootView.frame)
+        println(self.previewView.frame)
+
+        
+        btnCancelCam()
+        btnPopCam()
+        
         dispatch_async(self.sessionQueue) {
-          
+            
             self.addObserver(self, forKeyPath: "sessionRunningAndDeviceAuthorized", options: .Old | .New, context: SessionRunningAndDeviceAuthorizedContext)
             self.addObserver(self, forKeyPath: "stillImageOutput.capturingStillImage", options: .New | .Old, context: CapturingStillImageContext)
             self.addObserver(self, forKeyPath: "movieFileOutput.recording", options: .Old | .New, context: RecordingContext)
@@ -513,5 +537,123 @@ class AVCamViewController: UIViewController, AVCaptureFileOutputRecordingDelegat
             }
         }
     }
+    
+   
+    
+        
+    func btnCancelCam(){
+        
+        let image = UIImage(named: "close_camera") as UIImage?
+        btnCancel.setImage(image, forState: .Normal)
+        btnCancel.frame = CGRectMake(20, 30, 20, 20)
+        
+        //self.view.addSubview(button as UIView)
+        
+        btnCancel.addTarget(self, action: "btnCancelTapped:", forControlEvents: UIControlEvents.TouchUpInside)
+        
+        self.previewView.addSubview(btnCancel as UIView)
+        
+    }
+    
+    func btnCancelTapped(sender: AnyObject){
+        
+        dispatch_async(dispatch_get_main_queue(), {
+            self.rootView.backgroundColor = UIColor.orangeColor()
+            self.previewView.frame = CGRectMake(0 , self.screenBounds.height, self.screenBounds.width, self.screenBounds.height * 0.5 )
+            self.rootView.frame = CGRectMake(0 , self.screenBounds.height, self.screenBounds.width, self.screenBounds.height * 0.5 )
+            
+            println("self.screenBounds.height \(self.screenBounds.height )")
+            println("self.screenBounds.width \(self.screenBounds.width)")
+            
+            
+            var transition = CATransition()
+            transition.duration = 0.1
+            transition.type = kCATransitionPush
+            transition.subtype = kCATransitionFromBottom
+            self.rootView.layer.removeAnimationForKey("transition")
+            self.rootView.layer.addAnimation(transition, forKey: "transition")
+            
+            //self.view1.removeFromSuperview()
+        });
+    }
+    
+    
+    func btnPopCam(){
+        
+        let image = UIImage(named: "pop-out") as UIImage?
+        self.btnPop.setImage(image, forState: .Normal)
+        btnPop.frame = CGRectMake(200, 30, 20, 20)
+        btnPop.addTarget(self, action: "btnPopTapped:", forControlEvents: UIControlEvents.TouchUpInside)
+        
+        self.previewView.addSubview(btnPop as UIView)
+        
+    }
+    
+    func btnPopTapped(sender: AnyObject){
+        
+        dispatch_async(dispatch_get_main_queue(), {
+            
+            var transition = CATransition()
+            transition.duration = 0.1
+            transition.type = kCATransitionPush
+            
+            println("--btnPopTapped start-- \(self.isHighLighted)")
+            switch self.isHighLighted{
+            case true:
+              
+                let image = UIImage(named: "pop-out") as UIImage?
+                self.btnPop.setImage(image, forState: .Normal)
+                self.rootView.backgroundColor = UIColor.greenColor()
+                
+                self.recordButton.frame = CGRectMake(30, 250, 60, 60)
+                self.stillButton.frame = CGRectMake(260, 250, 60, 60)
+                
+                self.previewView.frame = CGRectMake(0 , 0, 375, 337 )
+                self.rootView.frame = CGRectMake(0 , self.screenBounds.height * 0.5, 375, 337 )
+                
+                println("true btnPopTapped previewView \(self.previewView.frame)")
+                println("true btnPopTapped rootView \(self.rootView.frame),")
+                
+                
+                
+                transition.subtype = kCATransitionFromBottom
+                self.rootView.layer.removeAnimationForKey("transition")
+                self.rootView.layer.addAnimation(transition, forKey: "transition")
+                self.isHighLighted = false
+            case false:
+                
+                let image = UIImage(named: "pop-in") as UIImage?
+                self.btnPop.setImage(image, forState: .Normal)
+                self.rootView.backgroundColor = UIColor.blueColor()
+                
+                
+                self.recordButton.frame = CGRectMake(30, 570, 60, 60)
+                self.stillButton.frame = CGRectMake(260, 570, 60, 60)
+                
+                self.previewView.frame = CGRectMake(0 , 0, 375, 667 )
+                self.rootView.frame = CGRectMake(0 , 0, 375, 667 )
+               
+                
+                
+                println("false btnPopTapped previewView \(self.previewView.frame)")
+                println("false btnPopTapped rootView \(self.rootView.frame),")
+                
+                
+                
+                transition.subtype = kCATransitionFromTop
+                self.rootView.layer.removeAnimationForKey("transition")
+                self.rootView.layer.addAnimation(transition, forKey: "transition")
+                self.isHighLighted = true
+                
+                
+                
+            default:
+                println("Nothing")
+            }
+            println("--btnPopTapped end--")
+        });
+        
+    }
+
     
 }

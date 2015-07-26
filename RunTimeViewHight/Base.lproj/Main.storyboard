@@ -1,217 +1,108 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="bD2-Og-8Oh">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="lgO-Kz-DEG">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
     <scenes>
-        <!--UIViewHeightSetting-->
-        <scene sceneID="tne-QT-ifu">
+        <!--View Controller-->
+        <scene sceneID="Krv-I5-UTU">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="RunTimeViewHight" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                <viewController id="lgO-Kz-DEG" customClass="ViewController" customModule="RunTimeViewHight" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mTP-Ak-3Ih">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="PVT-w6-oeH">
-                                <rect key="frame" x="64" y="95" width="50" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="unwind">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
+                            <containerView opaque="NO" contentMode="scaleToFill" id="XNl-HS-qh4">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <connections>
-                                    <action selector="openBottomView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DIe-0J-Vff"/>
-                                    <segue destination="DGl-6O-CTe" kind="modal" modalPresentationStyle="currentContext" id="z3L-Mh-GeL"/>
+                                    <segue destination="5GV-Kg-kK5" kind="embed" id="cG3-uX-Xwk"/>
                                 </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="VIi-pg-iev">
-                                <rect key="frame" x="157" y="95" width="100" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="SetViewHeight">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="openCam:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Kp9-hi-4p3"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="cZR-ut-JNc">
-                                <rect key="frame" x="16" y="69" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="switchBackgroundImage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HZF-YC-sMk"/>
-                                </connections>
-                            </button>
-                            <view contentMode="scaleToFill" id="NFs-5z-k1w">
-                                <rect key="frame" x="0.0" y="333" width="374" height="333"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <containerView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" id="mB2-1Y-aBh">
-                                        <rect key="frame" x="1" y="1" width="372" height="331"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <connections>
-                                            <segue destination="1iR-MX-yWk" kind="embed" id="rfh-VF-D6H"/>
-                                        </connections>
-                                    </containerView>
-                                </subviews>
-                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
+                            </containerView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="UIViewHeightSetting" id="DFz-TA-ANg"/>
                     <connections>
-                        <outlet property="btnSwitchImg" destination="cZR-ut-JNc" id="pag-gW-8tL"/>
-                        <outlet property="containerView" destination="8bC-Xf-vdC" id="4ii-sI-iX1"/>
-                        <outlet property="view1" destination="NFs-5z-k1w" id="eKx-V6-0Yu"/>
+                        <outlet property="containerView" destination="XNl-HS-qh4" id="2Cl-5T-yOQ"/>
+                        <outlet property="view1" destination="mTP-Ak-3Ih" id="XhC-t5-nUO"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rnX-Tc-yhH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2312" y="319"/>
-        </scene>
-        <!--View Controller1-->
-        <scene sceneID="tIz-LH-lGj">
-            <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" definesPresentationContext="YES" providesPresentationContextTransitionStyle="YES" modalPresentationStyle="currentContext" id="DGl-6O-CTe" customClass="ViewController1" customModule="RunTimeViewHight" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Aa0-hS-9ev">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="268"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gDe-9K-e0Z">
-                                <rect key="frame" x="16" y="33" width="37" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="close">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="Z1A-Ee-H79" kind="unwind" unwindAction="close:" id="Z59-4k-Yy0"/>
-                                </connections>
-                            </button>
-                            <view contentMode="scaleToFill" id="h13-XZ-bDA">
-                                <rect key="frame" x="100" y="57" width="160" height="134"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="lBx-75-bfU">
-                                <rect key="frame" x="16" y="150" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="btnTapped:" destination="DGl-6O-CTe" eventType="touchUpInside" id="khQ-Fp-4KG"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="0.1139326318" blue="0.17889456400000001" alpha="1" colorSpace="calibratedRGB"/>
-                    </view>
-                    <value key="contentSizeForViewInPopover" type="size" width="320" height="268"/>
-                    <nil key="simulatedStatusBarMetrics"/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="320" height="268"/>
-                    <connections>
-                        <outlet property="view1" destination="h13-XZ-bDA" id="gJG-pm-AG4"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="FOP-1d-KQa" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="Z1A-Ee-H79" userLabel="Exit" sceneMemberID="exit"/>
-            </objects>
-            <point key="canvasLocation" x="2762" y="320"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="e4f-ja-I3a">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bD2-Og-8Oh" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6Hz-uH-GiF">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Aio-I3-B8W"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="uOK-Da-gVU" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1781" y="320"/>
+            <point key="canvasLocation" x="2545" y="137"/>
         </scene>
         <!--Cam View Controller-->
-        <scene sceneID="mcb-vV-day">
+        <scene sceneID="E1N-fG-pSZ">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="1iR-MX-yWk" customClass="AVCamViewController" sceneMemberID="viewController">
-                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="RhA-bR-7YO">
-                        <rect key="frame" x="0.0" y="0.0" width="372" height="331"/>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="5GV-Kg-kK5" customClass="AVCamViewController" sceneMemberID="viewController">
+                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="nWO-8A-JTz">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" id="tFY-ca-4Pv" customClass="AVCamPreviewView">
-                                <rect key="frame" x="0.0" y="0.0" width="372" height="331"/>
+                            <view contentMode="scaleToFill" id="fyG-94-UvB" customClass="AVCamPreviewView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Hsh-6H-85o">
-                                        <rect key="frame" x="72" y="258" width="64" height="65"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
-                                        <state key="normal" image="recorder">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="toggleMovieRecording:" destination="1iR-MX-yWk" eventType="touchUpInside" id="HRO-kP-1hT"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="n40-3m-uPs">
-                                        <rect key="frame" x="300" y="30" width="35" height="27"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
-                                        <state key="normal" image="refresh">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="changeCamera:" destination="1iR-MX-yWk" eventType="touchUpInside" id="SCY-Hg-i6L"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="oWS-5f-lCQ">
-                                        <rect key="frame" x="252" y="258" width="63" height="65"/>
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="TXm-I7-LhY">
+                                        <rect key="frame" x="260" y="213" width="60" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
                                         <state key="normal" image="camera">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="snapStillImage:" destination="1iR-MX-yWk" eventType="touchUpInside" id="Y27-jX-BTL"/>
+                                            <action selector="snapStillImage:" destination="5GV-Kg-kK5" eventType="touchUpInside" id="Kl1-eF-j1j"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="gLm-Er-qxw">
+                                        <rect key="frame" x="320" y="30" width="20" height="20"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
+                                        <state key="normal" image="refresh">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="changeCamera:" destination="5GV-Kg-kK5" eventType="touchUpInside" id="gNy-7a-CKU"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ypJ-jg-C1c">
+                                        <rect key="frame" x="30" y="213" width="60" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
+                                        <state key="normal" image="recorder">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="toggleMovieRecording:" destination="5GV-Kg-kK5" eventType="touchUpInside" id="Skf-pi-j3b"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
                                 <connections>
-                                    <outletCollection property="gestureRecognizers" destination="LfI-VC-ART" appends="YES" id="huX-dO-0yP"/>
+                                    <outletCollection property="gestureRecognizers" destination="8OO-Sg-UFg" appends="YES" id="ZQj-j6-BXm"/>
                                 </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <gestureRecognizers/>
                     </view>
                     <toolbarItems/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="372" height="331"/>
                     <connections>
-                        <outlet property="cameraButton" destination="n40-3m-uPs" id="YOG-Rv-Gap"/>
-                        <outlet property="previewView" destination="tFY-ca-4Pv" id="bnS-3R-OFr"/>
-                        <outlet property="recordButton" destination="Hsh-6H-85o" id="fdm-ET-VjY"/>
-                        <outlet property="stillButton" destination="oWS-5f-lCQ" id="xOX-3j-be0"/>
+                        <outlet property="cameraButton" destination="gLm-Er-qxw" id="HdF-G4-3u6"/>
+                        <outlet property="previewView" destination="fyG-94-UvB" id="stO-K9-puX"/>
+                        <outlet property="recordButton" destination="ypJ-jg-C1c" id="fTu-Kp-iFt"/>
+                        <outlet property="rootView" destination="nWO-8A-JTz" id="EMW-Y3-dzy"/>
+                        <outlet property="stillButton" destination="TXm-I7-LhY" id="4rh-1i-hLh"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="KgV-cd-twd" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="LfI-VC-ART">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AIT-oI-Vgo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="8OO-Sg-UFg">
                     <connections>
-                        <action selector="focusAndExposeTap:" destination="1iR-MX-yWk" id="cZQ-aD-2CS"/>
+                        <action selector="focusAndExposeTap:" destination="5GV-Kg-kK5" id="0Yq-R7-2iw"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2169" y="916.99999999999989"/>
+            <point key="canvasLocation" x="3009" y="152"/>
         </scene>
     </scenes>
     <resources>

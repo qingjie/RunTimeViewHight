@@ -15,10 +15,7 @@ class ViewController1: UIViewController {
     var animator = Animator()
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-       
-        
-        
+
     }
     
     override func didReceiveMemoryWarning() {
