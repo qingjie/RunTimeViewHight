@@ -114,6 +114,8 @@ class AVCamViewController: UIViewController, AVCaptureFileOutputRecordingDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "messageHandler:", name: "messageNotification", object: nil)
+        
         // Create the AVCaptureSession
         let session = AVCaptureSession()
         self.session = session
@@ -655,5 +657,12 @@ class AVCamViewController: UIViewController, AVCaptureFileOutputRecordingDelegat
         
     }
 
+    func messageHandler(notification : NSNotification){
+        
+        println("My name is \(notification.object)")
+        viewWillAppear(true)
+        
+    }
+    
     
 }

@@ -30,9 +30,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
     }
-    
-    
+
     
     override func viewWillAppear(animated: Bool) {
         view1.addSubview(containerView)
@@ -49,12 +49,13 @@ class ViewController: UIViewController {
     }
     
     func btnShowTapped(sender: AnyObject){
+       NSNotificationCenter.defaultCenter().postNotificationName("messageNotification", object: NSString(string:"qingjie zhao"))
        println("Show")
         switch isShowed {
         case true:
             println("true")
             containerView.backgroundColor = UIColor.redColor()
-            containerView
+            //containerView
             isShowed = false
         case false:
             println("false")
